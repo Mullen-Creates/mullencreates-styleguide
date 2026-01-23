@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Repo Header Component - MullenCreates Design System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* =============================================================================
+           GitHub Repo Header Component
+           ============================================================================= */
+
+        /* CSS Custom Properties (Design Tokens) */
+        :root {
+            /* Color Palette */
+            --color-primary: #0B3D91;
+            --color-primary-dark: #083066;
+            --color-primary-light: #1e5aa8;
+            --color-secondary: #f5f7fa;
+            --color-white: #ffffff;
+            --color-black: #000000;
+            --color-text-primary: #333333;
+            --color-text-secondary: #666666;
+            --color-border: #e1e5e9;
+            --color-shadow: rgba(0, 0, 0, 0.1);
+            --color-github-bg: #0d1117;
+            --color-github-text: #c9d1d9;
+            --color-github-border: #30363d;
+            --color-github-nav-hover: #161b22;
+            --color-badge-bg: #1f6feb;
+            --color-badge-text: #ffffff;
+            --color-badge-border: #1f6feb;
+            
+            /* Typography */
+            --font-family-primary: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-family-heading: 'Roboto', Georgia, serif;
+            --font-family-mono: 'Monaco', 'Consolas', 'Courier New', monospace;
+            
+            /* Font Sizes */
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            
+            /* Spacing */
+            --spacing-1: 0.25rem;
+            --spacing-2: 0.5rem;
+            --spacing-3: 0.75rem;
+            --spacing-4: 1rem;
+            --spacing-5: 1.25rem;
+            --spacing-6: 1.5rem;
+            --spacing-8: 2rem;
+            
+            /* Border Radius */
+            --radius-sm: 0.125rem;
+            --radius-base: 0.375rem;
+            --radius-md: 0.5rem;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            
+            /* Transitions */
+            --transition-fast: 150ms ease-in-out;
+            --transition-base: 200ms ease-in-out;
+        }
+
+        /* Reset and Base Styles */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-primary);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            padding: var(--spacing-8);
+            background: var(--color-secondary);
+        }
+
+        /* =============================================================================
+           BEM Component: styleguide__repo-header
+           ============================================================================= */
+
+        /* Block */
+        .styleguide__repo-header {
+            background-color: var(--color-github-bg);
+            color: var(--color-github-text);
+            padding: var(--spacing-4) 0;
+            font-family: var(--font-family-primary);
+            border-bottom: 1px solid var(--color-github-border);
+        }
+
+        /* Container */
+        .styleguide__repo-header__container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-4);
+        }
+
+        /* Owner/Repo Section */
+        .styleguide__repo-header__title {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            margin-bottom: var(--spacing-4);
+            flex-wrap: wrap;
+        }
+
+        .styleguide__repo-header__owner {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-normal);
+            color: #539bf5;
+            text-decoration: none;
+            transition: text-decoration var(--transition-fast);
+        }
+
+        .styleguide__repo-header__owner:hover {
+            text-decoration: underline;
+        }
+
+        .styleguide__repo-header__separator {
+            font-size: var(--font-size-xl);
+            color: var(--color-github-text);
+            font-weight: var(--font-weight-normal);
+        }
+
+        .styleguide__repo-header__name {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            color: #539bf5;
+            text-decoration: none;
+            transition: text-decoration var(--transition-fast);
+        }
+
+        .styleguide__repo-header__name:hover {
+            text-decoration: underline;
+        }
+
+        /* Public Badge */
+        .styleguide__repo-header__badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0 var(--spacing-2);
+            height: 24px;
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-github-text);
+            background-color: transparent;
+            border: 1px solid var(--color-github-border);
+            border-radius: var(--radius-md);
+            text-transform: capitalize;
+        }
+
+        /* Navigation */
+        .styleguide__repo-header__nav {
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .styleguide__repo-header__nav-list {
+            display: flex;
+            gap: 0;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .styleguide__repo-header__nav-item {
+            margin: 0;
+        }
+
+        .styleguide__repo-header__nav-link {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            padding: var(--spacing-2) var(--spacing-4);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-normal);
+            color: var(--color-github-text);
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: background-color var(--transition-fast), 
+                        border-color var(--transition-fast);
+            white-space: nowrap;
+        }
+
+        .styleguide__repo-header__nav-link:hover {
+            background-color: var(--color-github-nav-hover);
+        }
+
+        .styleguide__repo-header__nav-link--active {
+            border-bottom-color: #f78166;
+            font-weight: var(--font-weight-semibold);
+        }
+
+        /* Counter Badge */
+        .styleguide__repo-header__counter {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 20px;
+            height: 20px;
+            padding: 0 var(--spacing-2);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-github-text);
+            background-color: rgba(110, 118, 129, 0.4);
+            border-radius: 2em;
+            line-height: 1;
+        }
+
+        /* Responsive Behavior */
+        @media (max-width: 768px) {
+            .styleguide__repo-header__title {
+                font-size: var(--font-size-base);
+            }
+
+            .styleguide__repo-header__owner,
+            .styleguide__repo-header__separator,
+            .styleguide__repo-header__name {
+                font-size: var(--font-size-base);
+            }
+
+            .styleguide__repo-header__nav {
+                margin: 0 calc(var(--spacing-4) * -1);
+            }
+
+            .styleguide__repo-header__nav-link {
+                padding: var(--spacing-2) var(--spacing-3);
+                font-size: var(--font-size-xs);
+            }
+        }
+
+        /* =============================================================================
+           Demo Page Styles
+           ============================================================================= */
+
+        .demo-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-8);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .demo-title {
+            font-family: var(--font-family-heading);
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-4);
+        }
+
+        .demo-description {
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-8);
+            line-height: 1.6;
+        }
+
+        .demo-preview {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: var(--spacing-8);
+            box-shadow: 0 0 0 1px var(--color-border);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1 class="demo-title">GitHub Repo Header Component</h1>
+        <p class="demo-description">
+            A styleguide component that replicates the GitHub repository header, 
+            featuring the owner/repo name, public visibility badge, and navigation tabs.
+            Built with BEM methodology following the MullenCreates design system.
+        </p>
+
+        <!-- Component Demo -->
+        <div class="demo-preview">
+            <div class="styleguide__repo-header">
+                <div class="styleguide__repo-header__container">
+                    <!-- Title Section with Owner/Repo and Badge -->
+                    <div class="styleguide__repo-header__title">
+                        <a href="#" class="styleguide__repo-header__owner">gavindrakemullen6-bit</a>
+                        <span class="styleguide__repo-header__separator">/</span>
+                        <a href="#" class="styleguide__repo-header__name">ZapPlayMines</a>
+                        <span class="styleguide__repo-header__badge">Public</span>
+                    </div>
+
+                    <!-- Navigation Tabs -->
+                    <nav class="styleguide__repo-header__nav">
+                        <ul class="styleguide__repo-header__nav-list">
+                            <li class="styleguide__repo-header__nav-item">
+                                <a href="#" class="styleguide__repo-header__nav-link styleguide__repo-header__nav-link--active">
+                                    Code
+                                </a>
+                            </li>
+                            <li class="styleguide__repo-header__nav-item">
+                                <a href="#" class="styleguide__repo-header__nav-link">
+                                    Issues
+                                </a>
+                            </li>
+                            <li class="styleguide__repo-header__nav-item">
+                                <a href="#" class="styleguide__repo-header__nav-link">
+                                    Pull requests
+                                    <span class="styleguide__repo-header__counter">3</span>
+                                </a>
+                            </li>
+                            <li class="styleguide__repo-header__nav-item">
+                                <a href="#" class="styleguide__repo-header__nav-link">
+                                    Actions
+                                </a>
+                            </li>
+                            <li class="styleguide__repo-header__nav-item">
+                                <a href="#" class="styleguide__repo-header__nav-link">
+                                    Projects
+                                    <span class="styleguide__repo-header__counter">1</span>
+                                </a>
+                            </li>
+                            <li class="styleguide__repo-header__nav-item">
+                                <a href="#" class="styleguide__repo-header__nav-link">
+                                    Wiki
+                                </a>
+                            </li>
+                            <li class="styleguide__repo-header__nav-item">
+                                <a href="#" class="styleguide__repo-header__nav-link">
+                                    Security
+                                </a>
+                            </li>
+                            <li class="styleguide__repo-header__nav-item">
+                                <a href="#" class="styleguide__repo-header__nav-link">
+                                    Insights
+                                </a>
+                            </li>
+                            <li class="styleguide__repo-header__nav-item">
+                                <a href="#" class="styleguide__repo-header__nav-link">
+                                    Settings
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- Usage Guidelines -->
+        <div style="margin-top: var(--spacing-8); padding: var(--spacing-6); background: var(--color-secondary); border-radius: var(--radius-md);">
+            <h2 style="font-family: var(--font-family-heading); font-size: var(--font-size-xl); margin-bottom: var(--spacing-4); color: var(--color-text-primary);">Usage</h2>
+            <pre style="background: var(--color-white); padding: var(--spacing-4); border-radius: var(--radius-base); overflow-x: auto; font-family: var(--font-family-mono); font-size: var(--font-size-sm); line-height: 1.5;"><code>&lt;div class="styleguide__repo-header"&gt;
+    &lt;div class="styleguide__repo-header__container"&gt;
+        &lt;div class="styleguide__repo-header__title"&gt;
+            &lt;a href="#" class="styleguide__repo-header__owner"&gt;owner-name&lt;/a&gt;
+            &lt;span class="styleguide__repo-header__separator"&gt;/&lt;/span&gt;
+            &lt;a href="#" class="styleguide__repo-header__name"&gt;repo-name&lt;/a&gt;
+            &lt;span class="styleguide__repo-header__badge"&gt;Public&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;nav class="styleguide__repo-header__nav"&gt;
+            &lt;ul class="styleguide__repo-header__nav-list"&gt;
+                &lt;li class="styleguide__repo-header__nav-item"&gt;
+                    &lt;a href="#" class="styleguide__repo-header__nav-link"&gt;
+                        Nav Item
+                        &lt;span class="styleguide__repo-header__counter"&gt;3&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+    </div>
+</body>
+</html>

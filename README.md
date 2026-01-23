@@ -12,6 +12,7 @@ A comprehensive, modular design system built with BEM methodology, optimized for
 ├── component-typography.html        # Standalone typography component  
 ├── component-buttons.html           # Standalone buttons component
 ├── component-cards-forms.html       # Standalone cards & forms component
+├── component-repo-header.html       # Standalone GitHub repo header component
 └── README.md                        # This documentation
 ```
 
@@ -140,6 +141,49 @@ Comprehensive card layouts and form elements with validation states.
 - `--valid` - Success/valid state
 - `--error` - Error state
 - `:disabled` - Disabled state
+
+### 5. GitHub Repo Header Component
+**File**: `component-repo-header.html`
+**Block**: `.styleguide__repo-header`
+
+A component that replicates the GitHub repository header with owner/repo identification, visibility badge, and navigation tabs.
+
+**Usage**:
+```html
+<div class="styleguide__repo-header">
+    <div class="styleguide__repo-header__container">
+        <div class="styleguide__repo-header__title">
+            <a href="#" class="styleguide__repo-header__owner">owner-name</a>
+            <span class="styleguide__repo-header__separator">/</span>
+            <a href="#" class="styleguide__repo-header__name">repo-name</a>
+            <span class="styleguide__repo-header__badge">Public</span>
+        </div>
+        <nav class="styleguide__repo-header__nav">
+            <ul class="styleguide__repo-header__nav-list">
+                <li class="styleguide__repo-header__nav-item">
+                    <a href="#" class="styleguide__repo-header__nav-link styleguide__repo-header__nav-link--active">
+                        Code
+                    </a>
+                </li>
+                <li class="styleguide__repo-header__nav-item">
+                    <a href="#" class="styleguide__repo-header__nav-link">
+                        Pull requests
+                        <span class="styleguide__repo-header__counter">3</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+```
+
+**Key Classes**:
+- `.styleguide__repo-header__owner` - Repository owner link
+- `.styleguide__repo-header__name` - Repository name link
+- `.styleguide__repo-header__badge` - Visibility badge (Public/Private)
+- `.styleguide__repo-header__nav-link` - Navigation tab links
+- `.styleguide__repo-header__nav-link--active` - Active tab modifier
+- `.styleguide__repo-header__counter` - Badge counter for tabs
 
 ## 🎯 WordPress Gutenberg Integration
 
