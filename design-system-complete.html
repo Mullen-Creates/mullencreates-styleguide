@@ -23,6 +23,10 @@
             --color-text-secondary: #666666;
             --color-border: #e1e5e9;
             --color-shadow: rgba(0, 0, 0, 0.1);
+            --color-github-bg: #0d1117;
+            --color-github-text: #c9d1d9;
+            --color-github-border: #30363d;
+            --color-github-nav-hover: #161b22;
             
             /* Typography */
             --font-family-primary: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -520,6 +524,141 @@
             min-height: 120px;
         }
 
+        /* =============================================================================
+           GitHub Repo Header Component
+           ============================================================================= */
+
+        /* Block */
+        .styleguide__repo-header {
+            background-color: var(--color-github-bg);
+            color: var(--color-github-text);
+            padding: var(--spacing-4) 0;
+            font-family: var(--font-family-primary);
+            border-bottom: 1px solid var(--color-github-border);
+            margin-bottom: var(--spacing-8);
+        }
+
+        /* Container */
+        .styleguide__repo-header__container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-4);
+        }
+
+        /* Owner/Repo Section */
+        .styleguide__repo-header__title {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            margin-bottom: var(--spacing-4);
+            flex-wrap: wrap;
+        }
+
+        .styleguide__repo-header__owner {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-normal);
+            color: #539bf5;
+            text-decoration: none;
+            transition: text-decoration var(--transition-fast);
+        }
+
+        .styleguide__repo-header__owner:hover {
+            text-decoration: underline;
+        }
+
+        .styleguide__repo-header__separator {
+            font-size: var(--font-size-xl);
+            color: var(--color-github-text);
+            font-weight: var(--font-weight-normal);
+        }
+
+        .styleguide__repo-header__name {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-semibold);
+            color: #539bf5;
+            text-decoration: none;
+            transition: text-decoration var(--transition-fast);
+        }
+
+        .styleguide__repo-header__name:hover {
+            text-decoration: underline;
+        }
+
+        /* Public Badge */
+        .styleguide__repo-header__badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0 var(--spacing-2);
+            height: 24px;
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-github-text);
+            background-color: transparent;
+            border: 1px solid var(--color-github-border);
+            border-radius: var(--radius-md);
+            text-transform: capitalize;
+        }
+
+        /* Navigation */
+        .styleguide__repo-header__nav {
+            display: flex;
+            gap: 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .styleguide__repo-header__nav-list {
+            display: flex;
+            gap: 0;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .styleguide__repo-header__nav-item {
+            margin: 0;
+        }
+
+        .styleguide__repo-header__nav-link {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            padding: var(--spacing-2) var(--spacing-4);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-normal);
+            color: var(--color-github-text);
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: background-color var(--transition-fast), 
+                        border-color var(--transition-fast);
+            white-space: nowrap;
+        }
+
+        .styleguide__repo-header__nav-link:hover {
+            background-color: var(--color-github-nav-hover);
+        }
+
+        .styleguide__repo-header__nav-link--active {
+            border-bottom-color: #f78166;
+            font-weight: var(--font-weight-semibold);
+        }
+
+        /* Counter Badge */
+        .styleguide__repo-header__counter {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 20px;
+            height: 20px;
+            padding: 0 var(--spacing-2);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-github-text);
+            background-color: rgba(110, 118, 129, 0.4);
+            border-radius: 2em;
+            line-height: 1;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .styleguide__header-title {
@@ -560,6 +699,22 @@
 
             .styleguide__section {
                 padding: var(--spacing-12) 0;
+            }
+
+            /* Repo Header Responsive */
+            .styleguide__repo-header__title {
+                font-size: var(--font-size-base);
+            }
+
+            .styleguide__repo-header__owner,
+            .styleguide__repo-header__separator,
+            .styleguide__repo-header__name {
+                font-size: var(--font-size-base);
+            }
+
+            .styleguide__repo-header__nav-link {
+                padding: var(--spacing-2) var(--spacing-3);
+                font-size: var(--font-size-xs);
             }
         }
 
@@ -641,6 +796,9 @@
                 </li>
                 <li class="styleguide__nav-item">
                     <a href="#cards-forms" class="styleguide__nav-link">Cards & Forms</a>
+                </li>
+                <li class="styleguide__nav-item">
+                    <a href="#repo-header" class="styleguide__nav-link">Repo Header</a>
                 </li>
             </ul>
         </div>
@@ -797,6 +955,81 @@
             </div>
         </div>
     </section>
+
+    <!-- Repo Header Section -->
+    <section id="repo-header" class="styleguide__section">
+        <div class="styleguide__container">
+            <h2 class="styleguide__section-title">GitHub Repo Header</h2>
+            <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-8); font-size: var(--font-size-lg); line-height: 1.6;">
+                A component that replicates the GitHub repository header, featuring owner/repo identification, 
+                visibility status, and navigation tabs.
+            </p>
+        </div>
+        <div class="styleguide__repo-header">
+            <div class="styleguide__repo-header__container">
+                <!-- Title Section with Owner/Repo and Badge -->
+                <div class="styleguide__repo-header__title">
+                    <a href="#" class="styleguide__repo-header__owner">gavindrakemullen6-bit</a>
+                    <span class="styleguide__repo-header__separator">/</span>
+                    <a href="#" class="styleguide__repo-header__name">ZapPlayMines</a>
+                    <span class="styleguide__repo-header__badge">Public</span>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="styleguide__repo-header__nav">
+                    <ul class="styleguide__repo-header__nav-list">
+                        <li class="styleguide__repo-header__nav-item">
+                            <a href="#" class="styleguide__repo-header__nav-link styleguide__repo-header__nav-link--active">
+                                Code
+                            </a>
+                        </li>
+                        <li class="styleguide__repo-header__nav-item">
+                            <a href="#" class="styleguide__repo-header__nav-link">
+                                Issues
+                            </a>
+                        </li>
+                        <li class="styleguide__repo-header__nav-item">
+                            <a href="#" class="styleguide__repo-header__nav-link">
+                                Pull requests
+                                <span class="styleguide__repo-header__counter">3</span>
+                            </a>
+                        </li>
+                        <li class="styleguide__repo-header__nav-item">
+                            <a href="#" class="styleguide__repo-header__nav-link">
+                                Actions
+                            </a>
+                        </li>
+                        <li class="styleguide__repo-header__nav-item">
+                            <a href="#" class="styleguide__repo-header__nav-link">
+                                Projects
+                                <span class="styleguide__repo-header__counter">1</span>
+                            </a>
+                        </li>
+                        <li class="styleguide__repo-header__nav-item">
+                            <a href="#" class="styleguide__repo-header__nav-link">
+                                Wiki
+                            </a>
+                        </li>
+                        <li class="styleguide__repo-header__nav-item">
+                            <a href="#" class="styleguide__repo-header__nav-link">
+                                Security
+                            </a>
+                        </li>
+                        <li class="styleguide__repo-header__nav-item">
+                            <a href="#" class="styleguide__repo-header__nav-link">
+                                Insights
+                            </a>
+                        </li>
+                        <li class="styleguide__repo-header__nav-item">
+                            <a href="#" class="styleguide__repo-header__nav-link">
+                                Settings
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                </div>
+            </div>
+        </section>
 
     <script>
         // Smooth scrolling for navigation links
